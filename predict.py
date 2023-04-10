@@ -11,8 +11,6 @@ from gfpgan import GFPGANer
 from realesrgan import RealESRGANer
 
 MODEL_NAME = "RealESRGAN_x4plus"
-RealESRGAN_x4plus = os.path.join("/root/.cache/realesrgan", MODEL_NAME + ".pth")
-RealisticRescaler = os.path.join("/root/.cache/realesrgan", "RealisticRescaler.pth")
 ESRGAN_PATH = os.path.join("/root/.cache/realesrgan", MODEL_NAME + ".pth")
 GFPGAN_PATH = "/root/.cache/realesrgan/GFPGANv1.3.pth"
 
@@ -30,7 +28,7 @@ class Predictor(BasePredictor):
         netscale = 4
         self.upsampler = RealESRGANer(
             scale=netscale,
-            model_path=RealisticRescaler,
+            model_path=ESRGAN_PATH,
             model=model,
             tile=0,
             tile_pad=10,
